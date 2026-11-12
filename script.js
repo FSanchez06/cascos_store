@@ -1,14 +1,15 @@
 // ===== Datos de productos =====
+const IMG = "https://images.pexels.com/photos/";
 const PRODUCTS = [
-  {id:1, name:"Thunder Pro R",  brand:"Shoei",    type:"integral",  price:1250000, emoji:"🏍️"},
-  {id:2, name:"Street Flip X",  brand:"HJC",      type:"modular",   price:780000,  emoji:"🪖"},
-  {id:3, name:"Urban Open 3",   brand:"LS2",      type:"abierto",   price:320000,  emoji:"🛵"},
-  {id:4, name:"Dirt Master MX", brand:"Fox",      type:"motocross", price:650000,  emoji:"⛑️"},
-  {id:5, name:"Carbon GT",      brand:"AGV",      type:"integral",  price:1450000, emoji:"🏍️"},
-  {id:6, name:"City Rider",     brand:"LS2",      type:"abierto",   price:280000,  emoji:"🛵"},
-  {id:7, name:"Modular Tour",   brand:"Shoei",    type:"modular",   price:980000,  emoji:"🪖"},
-  {id:8, name:"Enduro Peak",    brand:"Fox",      type:"motocross", price:540000,  emoji:"⛑️"},
-  {id:9, name:"Speed Vortex",   brand:"AGV",      type:"integral",  price:890000,  emoji:"🏍️"},
+  {id:1, name:"Thunder Pro R",  brand:"Shoei", type:"integral",  price:1250000, emoji:"🏍️", img:IMG+"12000088/pexels-photo-12000088.jpeg?auto=compress&cs=tinysrgb&w=600"},
+  {id:2, name:"Street Flip X",  brand:"HJC",   type:"modular",   price:780000,  emoji:"🪖", img:IMG+"38843996/pexels-photo-38843996.jpeg?auto=compress&cs=tinysrgb&w=600"},
+  {id:3, name:"Urban Open 3",   brand:"LS2",   type:"abierto",   price:320000,  emoji:"🛵", img:IMG+"20728826/pexels-photo-20728826.jpeg?auto=compress&cs=tinysrgb&w=600"},
+  {id:4, name:"Dirt Master MX", brand:"Fox",   type:"motocross", price:650000,  emoji:"⛑️", img:IMG+"18556007/pexels-photo-18556007.jpeg?auto=compress&cs=tinysrgb&w=600"},
+  {id:5, name:"Carbon GT",      brand:"AGV",   type:"integral",  price:1450000, emoji:"🏍️", img:IMG+"12950523/pexels-photo-12950523.jpeg?auto=compress&cs=tinysrgb&w=600"},
+  {id:6, name:"City Rider",     brand:"LS2",   type:"abierto",   price:280000,  emoji:"🛵", img:IMG+"18556012/pexels-photo-18556012.jpeg?auto=compress&cs=tinysrgb&w=600"},
+  {id:7, name:"Modular Tour",   brand:"Shoei", type:"modular",   price:980000,  emoji:"🪖", img:IMG+"12000088/pexels-photo-12000088.jpeg?auto=compress&cs=tinysrgb&w=600"},
+  {id:8, name:"Enduro Peak",    brand:"Fox",   type:"motocross", price:540000,  emoji:"⛑️", img:IMG+"18556007/pexels-photo-18556007.jpeg?auto=compress&cs=tinysrgb&w=600"},
+  {id:9, name:"Speed Vortex",   brand:"AGV",   type:"integral",  price:890000,  emoji:"🏍️", img:IMG+"12950523/pexels-photo-12950523.jpeg?auto=compress&cs=tinysrgb&w=600"},
 ];
 
 const fmt = n => "$" + n.toLocaleString("es-CO");
@@ -39,7 +40,7 @@ function renderGrid(){
   const items = getFiltered();
   grid.innerHTML = items.map(p => `
     <article class="card">
-      <div class="card__img">${p.emoji}</div>
+      <div class="card__img"><img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentNode.textContent='${p.emoji}'"></div>
       <div class="card__body">
         <span class="card__brand">${p.brand}</span>
         <h3 class="card__name">${p.name}</h3>
@@ -86,7 +87,7 @@ function renderCart(){
 
   cartItems.innerHTML = cart.length ? cart.map(i=>`
     <div class="ci">
-      <div class="ci__emoji">${i.emoji}</div>
+      <div class="ci__emoji"><img src="${i.img}" alt="${i.name}" onerror="this.parentNode.textContent='${i.emoji}'"></div>
       <div class="ci__info">
         <div class="ci__name">${i.name}</div>
         <div class="ci__price">${fmt(i.price)}</div>
